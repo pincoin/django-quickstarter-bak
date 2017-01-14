@@ -19,13 +19,17 @@ django-admin.py startproject --template https://gitlab.com/mairoo/django-quickst
 * 명령행 옵션으로 지정: ```--settings=config.settings.local```
 * 환경변수로 지정: ```DJANGO_SETTINGS_MODULE=config.settings.local```
 
-아래와 같이 테스트 서버를 구동할 수 있으며 local 대신 production, test 등으로 구체적인 설정 파일을 지정할 수 있다.
+아래와 같이 명령행 옵션으로 테스트 서버를 구동할 수 있다.
 
 ```
 manage.py runserver --settings=config.settings.local
 ```
 
-# Djagno-Quickstarter 템플릿 구조
+위 예시의 ```local```이 아닌 ```production```, ```test``` 등으로 구체적인 설정 파일을 지정할 수 있다.
+
+# Djagno-Quickstarter
+
+## 템플릿 구조
 
 굳이 저장소 루트와 프로젝트 루트 단계를 나눌 필요는 없을 것 같아 repository-config 2단계 구조로 정의한다.
 
@@ -61,3 +65,20 @@ manage.py runserver --settings=config.settings.local
 * ```ssl```: SSL 서버 운영을 위해 여러 공개키/비공개키 등을 저장하는 디렉토리이다.
 
 ```repo```, ```venv```, ```run```, ```logs```, ```ssl``` 디렉토리 모두 이름을 약속해서 다른 Django 프로젝트를 개발하더라도 쉽게 구조를 파악할 수 있도록 같은 이름으로 일관성을 유지한다.
+
+## 명령어 요약
+
+```
+## 명령어 정리
+
+본 프로젝트의 구조를 위한 아래와 같이 정리할 수 있다.
+
+```
+pyvenv venv
+source venv/bin/activate
+pip install Django
+mkdir repo run logs ssl
+sudo chown $(whoami):www-data run
+cd repo
+django-admin.py startproject conf .
+```
