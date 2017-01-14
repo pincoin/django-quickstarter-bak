@@ -16,13 +16,13 @@ django-admin.py startproject --template https://gitlab.com/mairoo/django-quickst
 
 서버 실행을 하려면 설정 모듈을 정확히 지정해야 한다.
 
-* 명령행 옵션으로 지정: ```--settings=config.settings.local```
-* 환경변수로 지정: ```DJANGO_SETTINGS_MODULE=config.settings.local```
+* 명령행 옵션으로 지정: ```--settings=conf.settings.local```
+* 환경변수로 지정: ```DJANGO_SETTINGS_MODULE=conf.settings.local```
 
 아래와 같이 명령행 옵션으로 테스트 서버를 구동할 수 있다.
 
 ```
-manage.py runserver --settings=config.settings.local
+manage.py runserver --settings=conf.settings.local
 ```
 
 위 예시의 ```local```이 아닌 ```production```, ```test``` 등으로 구체적인 설정 파일을 지정할 수 있다.
@@ -31,7 +31,7 @@ manage.py runserver --settings=config.settings.local
 
 ## 템플릿 구조
 
-굳이 저장소 루트와 프로젝트 루트 단계를 나눌 필요는 없을 것 같아 repository-config 2단계 구조로 정의한다.
+굳이 저장소 루트와 프로젝트 루트 단계를 나눌 필요는 없을 것 같아 저장소(repo)-설정(conf) 2단계 구조로 정의한다.
 
 다만 다른 프로젝트와 구별할 수 있도록 프로젝트 이름의 최상위 디렉토리의 이름을 짓는다.
 
@@ -44,6 +44,7 @@ manage.py runserver --settings=config.settings.local
                 local.py
                 production.py
         manage.py
+        properties.ini
     venv/
     run/
         uwsgi.ini
@@ -65,6 +66,24 @@ manage.py runserver --settings=config.settings.local
 * ```ssl```: SSL 서버 운영을 위해 여러 공개키/비공개키 등을 저장하는 디렉토리이다.
 
 ```repo```, ```venv```, ```run```, ```logs```, ```ssl``` 디렉토리 모두 이름을 약속해서 다른 Django 프로젝트를 개발하더라도 쉽게 구조를 파악할 수 있도록 같은 이름으로 일관성을 유지한다.
+
+## 로컬, 테스트, 운영 환경
+
+설정 파일은 크게 세 가지로 나눌 수 있다.
+
+* local.py: 개발자 컴퓨터 설정
+* test.py: 테스트 서버 설정
+* production.py: 운영 서버 설정
+
+위 파일에 저장되는 데이터는 공개 저장소에 커밋되어도 민감하지 않은 데이터이면서 다른 개발자와 공유되어야 하는 데이터이다.
+
+정적 파일, 미디어 파일 경로는 다른 개발자와 공유되는 데이터이다.
+
+## ```repo/properties.ini``` 파일
+
+* ```repo/properties.sample.ini``` 파일을 복사해 만든다.
+* 실행환경에 따라 달라질 수 있으면서 다른 서버에 공개되면 안 되는 데이터를 저장한다.
+* 비밀번호와 암호키 등을 포함하고 있으므로 절대 공개 저장소에 커밋하면 안 된다.
 
 ## 명령어 요약
 

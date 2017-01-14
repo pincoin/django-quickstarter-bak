@@ -152,5 +152,11 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+#
+# Django-Quickstarter
+#
 # SQLite3 database
 db.sqlite3
+
+# Configuration INI file
+properties.ini
