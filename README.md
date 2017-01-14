@@ -87,10 +87,7 @@ manage.py runserver --settings=conf.settings.local
 
 ## 명령어 요약
 
-```
-## 명령어 정리
-
-본 프로젝트의 구조를 위한 아래와 같이 정리할 수 있다.
+본 프로젝트의 구조를 위한 명령어는 아래와 같이 정리할 수 있다.
 
 ```
 pyvenv venv
