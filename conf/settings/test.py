@@ -19,3 +19,11 @@ DATABASES = {
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+# Media files (Upload)
+# https://docs.djangoproject.com/en/1.10/topics/files/
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+INSTALLED_APPS += []
