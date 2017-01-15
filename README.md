@@ -10,9 +10,18 @@ cookiecutter를 올바로 활용하려면 다소 많은 배경지식을 필요�
 
 ## 프로젝트의 생성
 
+Django를 먼저 설치하고 ```django-admin.py``` 명령어로 저장소에서 다운로드해서 프로젝트를 생성한다. ```startproject```로 프로젝트를 시작하지 않는다.
+
 ```
 django-admin.py startproject --template https://gitlab.com/mairoo/django-quickstarter/repository/archive.zip repo
 ```
+## properties.ini 파일 생성 및 수정
+
+```
+cp properties.sample.ini properties.ini
+```
+
+파일을 복사해서 알맞은 설정값으로 변경한다.
 
 ## 프로젝트 실행
 
