@@ -95,18 +95,13 @@ ENV/
 # described in https://git-scm.com/docs/gitignore
 
 *.egg-info
-*.pot
 *.py[co]
-.tox/
 __pycache__
 MANIFEST
-dist/
-docs/_build/
 docs/locale/
 node_modules/
 tests/coverage_html/
 tests/.coverage
-build/
 tests/report/
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
@@ -160,3 +155,4 @@ db.sqlite3
 
 # Configuration INI file
 properties.ini
+.idea/
