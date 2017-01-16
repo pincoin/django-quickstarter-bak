@@ -36,7 +36,7 @@ cp properties.sample.ini properties.ini
 manage.py runserver --settings=conf.settings.local
 ```
 
-위 예시의 ```local```이 아닌 ```production```, ```test``` 등으로 구체적인 설정 파일을 지정할 수 있다.
+위 예시의 ```local```이 아닌 ```production```, ```staging``` 등으로 구체적인 설정 파일을 지정할 수 있다.
 
 # Djagno-Quickstarter
 
@@ -78,18 +78,18 @@ manage.py runserver --settings=conf.settings.local
 
 ```repo```, ```venv```, ```run```, ```logs```, ```ssl``` 디렉토리 모두 이름을 약속해서 다른 Django 프로젝트를 개발하더라도 쉽게 구조를 파악할 수 있도록 같은 이름으로 일관성을 유지한다.
 
-## 로컬, 테스트, 운영 환경 설정의 분류
+## 로컬, 스테이징, 운영 환경 설정의 분류
 
 1. 환경마다 다른 공개적인 설정
     * ```local.py```: 개발자 컴퓨터 설정
-    * ```test.py```: 테스트 서버 설정
+    * ```staging.py```: 스테이징 서버 설정
     * ```production.py```: 운영 서버 설정
 1. 모든 환경에서 동일한 공개적인 설정
-    * ```base.py``` 파일을 만들고 이를 구체적인 ```local.py```, ```test,py```, ```production.py``` 등에서 임포트한다.
+    * ```base.py``` 파일을 만들고 이를 구체적인 ```local.py```, ```staging,py```, ```production.py``` 등에서 임포트한다.
 1. 환경마다 다른 비공개적인 설정
-    * ```local.py```, ```test.py```, ```production.py``` 등으로 파일을 나누고 설정값은 ```properties.ini``` 파일로 로드한다.
+    * ```local.py```, ```staging.py```, ```production.py``` 등으로 파일을 나누고 설정값은 ```properties.ini``` 파일로 로드한다.
 1. 모든 환경에서 동일한 비공개적인 설정
-    * ```base.py``` 파일을 만들고 설정값은 ```properties.ini``` 파일로 로드하며 구체적인 ```local.py```, ```test.py```, ```production.py``` 등에서 임포트한다.
+    * ```base.py``` 파일을 만들고 설정값은 ```properties.ini``` 파일로 로드하며 구체적인 ```local.py```, ```staging.py```, ```production.py``` 등에서 임포트한다.
 
 공개적인 설정은 저장소에 커밋 관리되고 비공개적인 설정은 properties.ini 파일에 저장하여 저장소에 공개되지 않도록 한다.
 
