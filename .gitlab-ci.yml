@@ -7,7 +7,7 @@ all_tests:
    - apt-get update -qy
    - apt-get install -y python-dev python-pip
    - pip install -r requirements/test.txt
-   - python manage.py test --settings=conf.settings.test
+   - cp properties.sample.ini properties.ini
    - python3 manage.py test -k --settings=conf.settings.test
   when: on_success
   only:
