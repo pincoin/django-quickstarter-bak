@@ -11,4 +11,4 @@ all_tests:
    - python3 manage.py test -k --settings=conf.settings.test
   when: on_success
   only:
-    - master
+    - dev
