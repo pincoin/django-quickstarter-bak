@@ -5,12 +5,12 @@ from .base import *
 
 DATABASES = {
     'default': {
-        'ENGINE': config['LOCAL']['DATABASE_ENGINE'],
-        'NAME': config['LOCAL']['DATABASE_NAME'],
-        'USER': config['LOCAL']['DATABASE_USER'],
-        'PASSWORD': config['LOCAL']['DATABASE_PASSWORD'],
-        'HOST': config['LOCAL']['DATABASE_HOST'],
-        'PORT': config['LOCAL']['DATABASE_PORT'],
+        'ENGINE': Secret.DATABASES['default']['ENGINE'],
+        'NAME': Secret.DATABASES['default']['NAME'],
+        'USER': Secret.DATABASES['default']['USER'],
+        'PASSWORD': Secret.DATABASES['default']['PASSWORD'],
+        'HOST': Secret.DATABASES['default']['HOST'],
+        'PORT': Secret.DATABASES['default']['PORT'],
     }
 }
 
