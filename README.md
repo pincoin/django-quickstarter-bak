@@ -15,13 +15,13 @@ Django를 먼저 설치하고 ```django-admin.py``` 명령어로 저장소에서
 ```
 django-admin.py startproject --template https://gitlab.com/mairoo/django-quickstarter/repository/archive.zip repo
 ```
-## properties.ini 파일 생성 및 수정
+## secret.py 파일 생성 및 수정
 
 ```
-cp properties.sample.ini properties.ini
+cp conf/settings/secret.py.txt conf/settings/secret.py
 ```
 
-파일을 복사해서 알맞은 설정값으로 변경한다.
+파일을 복사해서 데이터베이스 연결 등 알맞은 설정값으로 변경한다.
 
 ## 프로젝트 실행
 
@@ -37,6 +37,8 @@ manage.py runserver --settings=conf.settings.local
 ```
 
 위 예시의 ```local```이 아닌 ```production```, ```staging``` 등으로 구체적인 설정 파일을 지정할 수 있다.
+
+만약 아무런 옵션도 지정하지 않는다면 ```production``` 설정으로 간주한다.
 
 # Djagno-Quickstarter
 
@@ -87,15 +89,15 @@ manage.py runserver --settings=conf.settings.local
 1. 모든 환경에서 동일한 공개적인 설정
     * ```base.py``` 파일을 만들고 이를 구체적인 ```local.py```, ```staging,py```, ```production.py``` 등에서 임포트한다.
 1. 환경마다 다른 비공개적인 설정
-    * ```local.py```, ```staging.py```, ```production.py``` 등으로 파일을 나누고 설정값은 ```properties.ini``` 파일로 로드한다.
+    * ```local.py```, ```staging.py```, ```production.py``` 등으로 파일을 나누고 설정값은 ```secret.py``` 파일로 정의한다.
 1. 모든 환경에서 동일한 비공개적인 설정
-    * ```base.py``` 파일을 만들고 설정값은 ```properties.ini``` 파일로 로드하며 구체적인 ```local.py```, ```staging.py```, ```production.py``` 등에서 임포트한다.
+    * ```base.py``` 파일을 만들고 설정값은 ```secret.py``` 파일로 정의하고 구체적인 ```local.py```, ```staging.py```, ```production.py``` 등에서 임포트한다.
 
-공개적인 설정은 저장소에 커밋 관리되고 비공개적인 설정은 properties.ini 파일에 저장하여 저장소에 공개되지 않도록 한다.
+공개적인 설정은 저장소에 커밋 관리되고 비공개적인 설정은 ```secret.py``` 파일에 저장하여 저장소에 공개되지 않도록 한다. 현재 ```.gitignore``` 파일에 등록되어 있다.
 
-## ```properties.ini``` 파일
+## ```secret.py``` 파일
 
-* ```properties.sample.ini``` 파일을 복사해 만든다.
+* ```secret.py.txt``` 파일을 복사해 만든다.
 * 실행환경에 따라 달라질 수 있으면서 다른 서버에 공개되면 안 되는 데이터를 저장한다.
 * 비밀번호와 암호키 등을 포함하고 있으므로 절대 공개 저장소에 커밋하면 안 된다.
 
