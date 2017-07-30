@@ -8,9 +8,17 @@ cookiecutter를 올바로 활용하려면 다소 많은 배경지식을 필요�
 
 # 프로젝트의 생성과 실행
 
+## Django 설치
+
+pip 패키지로 Django를 설치한다.
+
+```
+pip install Django
+```
+
 ## 프로젝트의 생성
 
-Django를 먼저 설치하고 ```django-admin.py``` 명령어로 저장소에서 다운로드해서 프로젝트를 생성한다. ```startproject```로 프로젝트를 시작하지 않는다.
+```django-admin.py``` 명령어로 저장소에서 다운로드해서 프로젝트를 생성한다. ```startproject```로 프로젝트를 시작하지 않는다.
 
 ```
 django-admin.py startproject --template https://gitlab.com/mairoo/django-quickstarter/repository/archive.zip repo
@@ -21,7 +29,13 @@ django-admin.py startproject --template https://gitlab.com/mairoo/django-quickst
 cp conf/settings/secret.py.txt conf/settings/secret.py
 ```
 
-파일을 복사해서 데이터베이스 연결 등 알맞은 설정값으로 변경한다.
+```conf/settings/secret.py.txt``` 파일을 복사해서 데이터베이스 연결 등 알맞은 설정값으로 변경한다.
+
+실행환경에 따라서  설정 파일과 요구사항 파일을 분류한다.
+
+* 개발자 컴퓨터 설정: ```conf/settings/local.py``` 및 ```requirements/local.txt```
+* 스테이징 서버 설정: ```conf/settings/staging.py``` 및 ```requirements/staging.txt```
+* 운영 서버 설정: ```conf/settings/production.py``` 및 ```requirements/production.txt``` 
 
 ## 프로젝트 실행
 
