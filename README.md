@@ -54,7 +54,7 @@ manage.py runserver --settings=conf.settings.local
 
 만약 아무런 옵션도 지정하지 않는다면 ```production``` 설정으로 간주한다.
 
-# Djagno-Quickstarter
+# Djagno-Quickstarter 설명
 
 ## 템플릿 구조
 
@@ -114,35 +114,3 @@ manage.py runserver --settings=conf.settings.local
 * ```secret.py.txt``` 파일을 복사해 만든다.
 * 실행환경에 따라 달라질 수 있으면서 다른 서버에 공개되면 안 되는 데이터를 저장한다.
 * 비밀번호와 암호키 등을 포함하고 있으므로 절대 공개 저장소에 커밋하면 안 된다.
-
-# 의존성 파일 정보 (requirements 디렉토리)
-
-환경에 따라 다른 파이썬 패키지 의존성 정보를 저장해두고 후에 복원할 수 있다.
-
-* Django
-
-# 주요 옵션 설명
-
-## 데이터베이스
-
-## 템플릿
-
-## 정적 파일과 미디어 파일
-
-## 지역 시각
-
-## 애플리케이션의 등록
-
-# 명령어 요약
-
-본 프로젝트의 구조를 위한 명령어는 아래와 같이 정리할 수 있다.
-
-```
-pyvenv venv
-source venv/bin/activate
-pip install Django
-mkdir repo run logs ssl
-sudo chown $(whoami):www-data run
-cd repo
-django-admin.py startproject conf .
-```
