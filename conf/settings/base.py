@@ -17,6 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 DEBUG = Secret.DEBUG
 ALLOWED_HOSTS = Secret.ALLOWED_HOSTS
 SECRET_KEY = Secret.SECRET_KEY
+DATABASES = Secret.DATABASES
 
 # Application definition
 INSTALLED_APPS = [
@@ -52,6 +53,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'debug': DEBUG,
         },
     },
 ]
@@ -62,25 +64,24 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', },
 ]
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+# Email settings
+# https://docs.djangoproject.com/en/1.11/topics/email/
+EMAIL_BACKEND = Secret.EMAIL_BACKEND
+EMAIL_HOST = Secret.EMAIL_HOST
+EMAIL_PORT = Secret.EMAIL_PORT
+EMAIL_HOST_USER = Secret.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = Secret.EMAIL_HOST_PASSWORD
+EMAIL_USE_TLS = Secret.EMAIL_USE_TLS
