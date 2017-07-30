@@ -53,4 +53,6 @@ LOGGING = {
     }
 }
 
-INSTALLED_APPS += []
+INSTALLED_APPS += [
+    'account.apps.AccountConfig',
+]

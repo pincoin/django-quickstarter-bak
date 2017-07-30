@@ -1,5 +1,4 @@
 # 목표
-
 Django 애플리케이션의 기본 뼈대를 제공한다. Two Scoops of Django 책을 참고로 작성하였다.
 
 cookiecutter를 올바로 활용하려면 다소 많은 배경지식을 필요로 해서 간단한 템플릿을 만들고자 한다.
@@ -7,9 +6,7 @@ cookiecutter를 올바로 활용하려면 다소 많은 배경지식을 필요�
 가장 기본이 되는 내용으로 구성하고 --template 옵션으로 새 프로젝트를 간단히 시작할 수 있도록 한다.
 
 # 프로젝트의 생성과 실행
-
 ## Django 설치
-
 pip 패키지로 Django를 설치한다.
 
 ```
@@ -17,14 +14,12 @@ pip install Django
 ```
 
 ## 프로젝트의 생성
-
 ```django-admin.py``` 명령어로 저장소에서 다운로드해서 프로젝트를 생성한다. ```startproject```로 프로젝트를 시작하지 않는다.
 
 ```
 django-admin.py startproject --template https://gitlab.com/mairoo/django-quickstarter/repository/archive.zip repo
 ```
 ## secret.py 파일 생성 및 수정
-
 ```
 cp conf/settings/secret.py.txt conf/settings/secret.py
 ```
@@ -114,3 +109,8 @@ manage.py runserver --settings=conf.settings.local
 * ```secret.py.txt``` 파일을 복사해 만든다.
 * 실행환경에 따라 달라질 수 있으면서 다른 서버에 공개되면 안 되는 데이터를 저장한다.
 * 비밀번호와 암호키 등을 포함하고 있으므로 절대 공개 저장소에 커밋하면 안 된다.
+
+## 커스텀 User 모델
+```django.contrib.auth.models.AbstractBaseUser``` 클래스를 상속한 사용자 정의 User 모델을 사용한다.
+
+Django 사용자 모델 중 가장 자유도가 높은 방법으로 프로젝트 시작에 결정하지 않고 중간에 변경하려면 큰 어려움이 있다.

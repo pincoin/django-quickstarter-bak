@@ -85,3 +85,7 @@ EMAIL_PORT = Secret.EMAIL_PORT
 EMAIL_HOST_USER = Secret.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = Secret.EMAIL_HOST_PASSWORD
 EMAIL_USE_TLS = Secret.EMAIL_USE_TLS
+
+# Authentication settings
+# Custom auth user model
+AUTH_USER_MODEL = 'account.User'
