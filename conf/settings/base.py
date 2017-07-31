@@ -89,3 +89,12 @@ EMAIL_USE_TLS = Secret.EMAIL_USE_TLS
 # Authentication settings
 # Custom auth user model
 AUTH_USER_MODEL = 'account.User'
+
+# django.contrib.auth
+LOGIN_URL = '/accounts/login/'  # default
+LOGOUT_URL = '/accounts/logout/'  # default
+LOGIN_REDIRECT_URL = '/'  # default = /accounts/profile/
+# LOGOUT_REDIRECT_URL = '/'
+
+ACCOUNT_ACTIVATION_DAYS = 1
+PASSWORD_RESET_TIMEOUT_DAYS = 1  # default = 1
