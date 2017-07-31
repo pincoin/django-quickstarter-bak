@@ -1,7 +1,8 @@
 {% if user.is_authenticated %}
+    Will you sign out in order to switch account?
     <a href="{% url 'auth_logout' %}">Logout</a>
 {% else %}
-    <form method="post" action="">
+    <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="hidden" name="next" value="{{ next }}"/>
