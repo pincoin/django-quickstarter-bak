@@ -6,6 +6,8 @@ from hashlib import sha1, md5
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, PermissionsMixin
 )
+from django.core.mail import EmailMessage
+
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
@@ -105,6 +107,11 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.username
+
+    def email_user(self, subject, message, from_email=None):
+        # Sends activation email
+        email = EmailMessage(subject, message, to=[self.email])
+        email.send()
 
     def get_full_name(self):
         """

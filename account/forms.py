@@ -5,6 +5,9 @@ from django.contrib.auth.forms import (
     ReadOnlyPasswordHashField
 )
 from django.utils.translation import ugettext_lazy as _
+from registration.forms import (
+    RegistrationFormUniqueEmail, RegistrationFormTermsOfService
+)
 
 from .models import (
     User, UserManager
@@ -134,3 +137,13 @@ class UserChangeForm(forms.ModelForm):
         # This is done here, rather than on the field, because the
         # field does not have access to the initial value
         return self.initial["password"]
+
+
+class WebUserCreationForm(RegistrationFormUniqueEmail, RegistrationFormTermsOfService):
+    #  A form for creating new users on web interface.
+
+    class Meta:
+        # Custom User model must be designated here!
+        model = User
+        # Input fields must be listed here!
+        fields = ('email', 'last_name', 'first_name', 'username')
