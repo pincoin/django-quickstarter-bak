@@ -1,12 +1,10 @@
-{% load crispy_forms_tags %}
-
 {% if user.is_authenticated %}
     <p>Will you sign out in order to switch account?</p>
     <p><a href="{% url 'auth_logout' %}">Logout</a></p>
 {% else %}
     <form action="" method="post">
         {% csrf_token %}
-        {{ form|crispy }}
+        {{ form.as_p }}
         <input type="hidden" name="next" value="{{ next }}"/>
         <button>Login</button>
     </form>
