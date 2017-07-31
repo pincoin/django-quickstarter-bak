@@ -91,10 +91,12 @@ EMAIL_USE_TLS = Secret.EMAIL_USE_TLS
 AUTH_USER_MODEL = 'account.User'
 
 # django.contrib.auth
-LOGIN_URL = '/accounts/login/'  # default
-LOGOUT_URL = '/accounts/logout/'  # default
-LOGIN_REDIRECT_URL = '/'  # default = /accounts/profile/
+LOGIN_URL = '/accounts/login/'  # default=/accounts/login/
+LOGOUT_URL = '/accounts/logout/'  # default=/accounts/logout/
+LOGIN_REDIRECT_URL = '/'  # default=/accounts/profile/
 # LOGOUT_REDIRECT_URL = '/'
 
-ACCOUNT_ACTIVATION_DAYS = 1
-PASSWORD_RESET_TIMEOUT_DAYS = 1  # default = 1
+# django-registration
+REGISTRATION_OPEN = True  # default=True
+ACCOUNT_ACTIVATION_DAYS = 1  # Enables 2-phase registration
+PASSWORD_RESET_TIMEOUT_DAYS = 1  # default=3

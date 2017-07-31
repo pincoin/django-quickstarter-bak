@@ -114,3 +114,6 @@ manage.py runserver --settings=conf.settings.local
 ```django.contrib.auth.models.AbstractBaseUser``` 클래스를 상속한 사용자 정의 User 모델을 사용한다.
 
 Django 사용자 모델 중 가장 자유도가 높은 방법으로 프로젝트 시작에 결정하지 않고 중간에 변경하려면 큰 어려움이 있다.
+
+## 이메일 인증 2단계 가입 절차
+django-registration 라이브러리를 이용하여 회원 가입 후 이메일 인증을 해야 로그인 가능하다.

@@ -1,10 +1,11 @@
 {% if user.is_authenticated %}
-<a href="{% url 'auth_logout' %}">Logout</a>
+    <a href="{% url 'auth_logout' %}">Logout</a>
 {% else %}
-<form method="post" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button>Login</button>
-</form>
-<a href="{% url 'registration_register' %}">Sign up</a>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next }}"/>
+        <button>Login</button>
+    </form>
+    <a href="{% url 'registration_register' %}">Sign up</a>
 {% endif %}
