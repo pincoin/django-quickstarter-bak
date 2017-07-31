@@ -7,7 +7,7 @@ class Secret:
 
     # SECURITY WARNING: keep the secret key used in production secret!
     # http://www.miniwebtool.com/django-secret-key-generator/
-    SECRET_KEY = 'ae87@-b^6m9fw=gsu@=+7bv&&kpdt^$ay7ztikwjnz_w6$i@6p'
+    SECRET_KEY = 'whn$t)md9-o^fo6=b_u%+03yvpn_&yio#+!qc@n&uwajk1zr=%'
 
     # Database (default: SQLite3)
     # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
