@@ -21,6 +21,7 @@ DATABASES = Secret.DATABASES
 
 # Application definition
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',  # Must precede 'django.contrib.admin' and 'django.contrib.auth'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
