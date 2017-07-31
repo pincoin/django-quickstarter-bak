@@ -98,3 +98,6 @@ LOGIN_REDIRECT_URL = '/'  # default=/accounts/profile/
 REGISTRATION_OPEN = True  # default=True
 ACCOUNT_ACTIVATION_DAYS = 1  # Enables 2-phase registration
 PASSWORD_RESET_TIMEOUT_DAYS = 1  # default=3
+
+# django-crispy-forms
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
