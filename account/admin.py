@@ -5,7 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 from .forms import (
     UserCreationForm, UserChangeForm
 )
-from .models import User
+from .models import (
+    User, UserLoginLog
+)
 
 
 class UserAdmin(BaseUserAdmin):
@@ -37,5 +39,12 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = ()
 
 
+class UserLoginLogAdmin(admin.ModelAdmin):
+    list_display = ('user', 'ip_address', 'user_agent',)
+    search_fields = ('ip_address',)
+    date_hierarchy = 'created'
+
+
 # Now register the new UserAdmin...
 admin.site.register(User, UserAdmin)
+admin.site.register(UserLoginLog, UserLoginLogAdmin)
