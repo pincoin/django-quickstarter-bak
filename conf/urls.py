@@ -12,11 +12,10 @@ urlpatterns = [
     url(r'^admin/',
         admin.site.urls),
 
-    url(r'^oauth/',
-        include('social_django.urls', namespace='social')),
-
     url(r'^accounts/register/$',
-        RegistrationView.as_view(form_class=WebUserCreationForm), name='registration_register'),
+        RegistrationView.as_view(
+            form_class=WebUserCreationForm
+        ), name='registration_register'),
     url(r'^accounts/',
         include('registration.backends.hmac.urls')),
 ]

@@ -15,11 +15,8 @@ class UserManager(BaseUserManager):
         Creates and saves a User with the given email, username,
         password and other information
         """
-        if settings.AUTH_USERNAME_FIELD == 'email' and not email:
+        if not email:
             raise ValueError(_('Users must have an email address'))
-
-        if settings.AUTH_USERNAME_FIELD == 'username' and not username:
-            raise ValueError(_('Users must have a username'))
 
         user = self.model(
             email=self.normalize_email(email),
@@ -96,8 +93,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    USERNAME_FIELD = settings.AUTH_USERNAME_FIELD
-    REQUIRED_FIELDS = settings.AUTH_REQUIRED_FIELDS
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'last_name', 'first_name', ]
 
     class Meta:
         verbose_name = _('user')

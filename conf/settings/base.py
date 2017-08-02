@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -38,7 +37,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'conf.urls'
@@ -54,8 +52,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
             ],
             'debug': DEBUG,
         },
@@ -89,20 +85,8 @@ EMAIL_HOST_PASSWORD = Secret.EMAIL_HOST_PASSWORD
 EMAIL_USE_TLS = Secret.EMAIL_USE_TLS
 
 # Authentication settings
-# Authentication backends with SNS
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.line.LineOAuth2',
-    'social_core.backends.kakao.KakaoOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-)
-
 # Custom auth user model
 AUTH_USER_MODEL = 'account.User'
-AUTH_USERNAME_FIELD = 'email'
-AUTH_REQUIRED_FIELDS = ['username', 'last_name', 'first_name', ]
 
 # django.contrib.auth
 LOGIN_URL = '/accounts/login/'  # default=/accounts/login/
@@ -117,25 +101,3 @@ PASSWORD_RESET_TIMEOUT_DAYS = 1  # default=3
 
 # django-crispy-forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
-
-# OAuth
-SOCIAL_AUTH_PIPELINE = (
-    'social_core.pipeline.social_auth.social_details',
-    'social_core.pipeline.social_auth.social_uid',
-    'social_core.pipeline.social_auth.auth_allowed',
-    'social_core.pipeline.social_auth.social_user',
-    'social_core.pipeline.user.get_username',
-    # 'social_core.pipeline.mail.mail_validation',
-    # 'social_core.pipeline.social_auth.associate_by_email',
-    # 'social_core.pipeline.user.create_user',
-    'account.social.create_user',
-    'social_core.pipeline.social_auth.associate_user',
-    'social_core.pipeline.social_auth.load_extra_data',
-    'social_core.pipeline.user.user_details',
-)
-SOCIAL_AUTH_FACEBOOK_KEY = Secret.SOCIAL_AUTH_FACEBOOK_KEY
-SOCIAL_AUTH_FACEBOOK_SECRET = Secret.SOCIAL_AUTH_FACEBOOK_SECRET
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']  # Fetch email address
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-    'fields': 'id, name, email, last_name, first_name',
-}
