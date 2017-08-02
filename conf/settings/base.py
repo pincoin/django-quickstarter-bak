@@ -20,13 +20,18 @@ DATABASES = Secret.DATABASES
 
 # Application definition
 INSTALLED_APPS = [
-    'account.apps.AccountConfig',  # Must precede 'django.contrib.admin' and 'django.contrib.auth'
+    # 'account_old.apps.AccountConfig',  # Must precede 'django.contrib.admin' and 'django.contrib.auth'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -84,20 +89,23 @@ EMAIL_HOST_USER = Secret.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = Secret.EMAIL_HOST_PASSWORD
 EMAIL_USE_TLS = Secret.EMAIL_USE_TLS
 
+SITE_ID = 1
+
 # Authentication settings
 # Custom auth user model
-AUTH_USER_MODEL = 'account.User'
+# AUTH_USER_MODEL = 'account_old.User'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # default model backend
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 # django.contrib.auth
+PASSWORD_RESET_TIMEOUT_DAYS = 1  # default=3
 LOGIN_URL = '/accounts/login/'  # default=/accounts/login/
 LOGOUT_URL = '/accounts/logout/'  # default=/accounts/logout/
 LOGIN_REDIRECT_URL = '/'  # default=/accounts/profile/
 # LOGOUT_REDIRECT_URL = '/'
-
-# django-registration
-REGISTRATION_OPEN = True  # default=True
-ACCOUNT_ACTIVATION_DAYS = 1  # Enables 2-phase registration
-PASSWORD_RESET_TIMEOUT_DAYS = 1  # default=3
 
 # django-crispy-forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
