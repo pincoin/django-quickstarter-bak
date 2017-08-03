@@ -20,7 +20,6 @@ DATABASES = Secret.DATABASES
 
 # Application definition
 INSTALLED_APPS = [
-    # 'account_old.apps.AccountConfig',  # Must precede 'django.contrib.admin' and 'django.contrib.auth'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -32,6 +31,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     # 'allauth.socialaccount.providers.facebook',
+    'member.apps.MemberConfig',
 ]
 
 MIDDLEWARE = [
@@ -91,10 +91,6 @@ EMAIL_USE_TLS = Secret.EMAIL_USE_TLS
 
 SITE_ID = 1
 
-# Authentication settings
-# Custom auth user model
-# AUTH_USER_MODEL = 'account_old.User'
-
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',  # default model backend
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -106,6 +102,15 @@ LOGIN_URL = '/accounts/login/'  # default=/accounts/login/
 LOGOUT_URL = '/accounts/logout/'  # default=/accounts/logout/
 LOGIN_REDIRECT_URL = '/'  # default=/accounts/profile/
 # LOGOUT_REDIRECT_URL = '/'
+
+# django-allauth
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
+ACCOUNT_SIGNUP_FORM_CLASS = 'member.forms.SignupForm'
+SOCIALACCOUNT_AUTO_SIGNUP = False
 
 # django-crispy-forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
