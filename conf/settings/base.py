@@ -116,8 +116,8 @@ SOCIALACCOUNT_AUTO_SIGNUP = False
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
         'METHOD': 'oauth2',
-        'SCOPE': ['email', 'public_profile', 'user_friends'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'SCOPE': ['email', 'public_profile', ],  # 'user_friends' are not requested
+        # 'AUTH_PARAMS': {'auth_type': 'reauthenticate'}, # If commented out, doesn't ask password.
         'INIT_PARAMS': {'cookie': True},
         'FIELDS': [
             'id',
