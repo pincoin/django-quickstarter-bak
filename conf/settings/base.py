@@ -18,21 +18,47 @@ ALLOWED_HOSTS = Secret.ALLOWED_HOSTS
 SECRET_KEY = Secret.SECRET_KEY
 DATABASES = Secret.DATABASES
 
+SITE_ID = 1
+
 # Application definition
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+]
+
+ALLAUTH_APPS = [
     'django.contrib.sites',
+    'member.apps.MemberConfig',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
-    'member.apps.MemberConfig',
 ]
+
+WAGTAIL_APPS = [
+    'wagtail.wagtailforms',
+    'wagtail.wagtailredirects',
+    'wagtail.wagtailembeds',
+    'wagtail.wagtailsites',
+    'wagtail.wagtailusers',
+    'wagtail.wagtailsnippets',
+    'wagtail.wagtaildocs',
+    'wagtail.wagtailimages',
+    'wagtail.wagtailsearch',
+    'wagtail.wagtailadmin',
+    'wagtail.wagtailcore',
+    'modelcluster',
+    'taggit',
+]
+
+PROJECT_APPS = [
+]
+
+INSTALLED_APPS = DJANGO_APPS + WAGTAIL_APPS + PROJECT_APPS + ALLAUTH_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -42,6 +68,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'wagtail.wagtailcore.middleware.SiteMiddleware',
+    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'conf.urls'
@@ -88,8 +116,6 @@ EMAIL_PORT = Secret.EMAIL_PORT
 EMAIL_HOST_USER = Secret.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = Secret.EMAIL_HOST_PASSWORD
 EMAIL_USE_TLS = Secret.EMAIL_USE_TLS
-
-SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',  # default model backend
@@ -144,3 +170,6 @@ SOCIAL_AUTH_FACEBOOK_SECRET = Secret.SOCIAL_AUTH_FACEBOOK_KEY
 
 # django-crispy-forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# wagtail
+WAGTAIL_SITE_NAME = 'Django quickstarter'

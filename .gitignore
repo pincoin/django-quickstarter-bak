@@ -152,6 +152,7 @@ fabric.properties
 #
 # SQLite3 database
 db.sqlite3
+uploads/*
 
 # Secret Configuration
 conf/settings/secret.py
