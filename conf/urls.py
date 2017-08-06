@@ -9,15 +9,21 @@ from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 
 urlpatterns = [
-    url(r'^admin/',
+    # Django admin
+    url(r'^sysadmin/',
         admin.site.urls),
 
+    # Django-allauth
     url(r'^accounts/',
         include('allauth.urls')),
 
-    url(r'^cms/', include(wagtailadmin_urls)),
-    url(r'^documents/', include(wagtaildocs_urls)),
-    url(r'^pages/', include(wagtail_urls)),
+    # Wagtail
+    url(r'^admin/',
+        include(wagtailadmin_urls)),
+    url(r'^documents/',
+        include(wagtaildocs_urls)),
+    url(r'',
+        include(wagtail_urls)),
 ]
 
 if settings.DEBUG:

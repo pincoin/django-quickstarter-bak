@@ -19,8 +19,6 @@ ALLOWED_HOSTS = Secret.ALLOWED_HOSTS
 SECRET_KEY = Secret.SECRET_KEY
 DATABASES = Secret.DATABASES
 
-SITE_ID = 1
-
 # Application definition
 DJANGO_APPS = [
     'django.contrib.admin',
@@ -57,6 +55,7 @@ WAGTAIL_APPS = [
 ]
 
 PROJECT_APPS = [
+    'crispy_forms',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + WAGTAIL_APPS + PROJECT_APPS + ALLAUTH_APPS
@@ -173,4 +172,4 @@ SOCIAL_AUTH_FACEBOOK_SECRET = Secret.SOCIAL_AUTH_FACEBOOK_KEY
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # wagtail
-WAGTAIL_SITE_NAME = 'Django quickstarter'
+WAGTAIL_SITE_NAME = 'Django/Wagtail Quickstarter'
