@@ -58,7 +58,7 @@ PROJECT_APPS = [
     'crispy_forms',
 ]
 
-INSTALLED_APPS = DJANGO_APPS + WAGTAIL_APPS + PROJECT_APPS + ALLAUTH_APPS
+INSTALLED_APPS = PROJECT_APPS + WAGTAIL_APPS + DJANGO_APPS + ALLAUTH_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

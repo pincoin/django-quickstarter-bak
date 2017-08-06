@@ -59,5 +59,5 @@ LOGGING = {
     }
 }
 
-INSTALLED_APPS += [
-]
+INSTALLED_APPS = [
+                 ] + INSTALLED_APPS
